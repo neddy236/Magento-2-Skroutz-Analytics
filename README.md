@@ -4,7 +4,13 @@
 # Realease Info
 Works with Magento 2.1.x, 2.2.x (haven't tested in 2.3.x);
 
-http://prntscr.com/p1wq09
+
+### Features
+Adds global script on site
+![globalscript](http://prntscr.com/p1ww44)
+
+Send cart items along with order data on success page
+![globalscript](http://prntscr.com/p1wwu6)
 
 
 ### Installation
