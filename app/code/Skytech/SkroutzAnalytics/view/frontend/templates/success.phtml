@@ -1,0 +1,56 @@
+<?php
+
+    // @Author: Vasilis Neris
+    // @contact: vasilis.neris@gmail.com
+    // @Description: Skroutz Analytics
+    
+    // Skytech Skroutz Analytics is free software: you can redistribute it and/or modify
+    // it under the terms of the GNU General Public License as published by
+    // the Free Software Foundation, either version 3 of the License, or
+    // (at your option) any later version.
+
+    // Skytech Skroutz Analytics is distributed in the hope that it will be useful,
+    // but WITHOUT ANY WARRANTY; without even the implied warranty of
+    // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    // GNU General Public License for more details.
+
+    // You should have received a copy of the GNU General Public License
+    // along with this code.  If not, see <https://www.gnu.org/licenses/>.
+
+    
+?>
+
+<?php 
+$enabled = $block->getStoreConfig('skroutz_analytics/script/enable');
+
+if ($enabled):
+    $order = $block->getOrderByIncrementId();
+
+
+?>
+
+<?php $orderId = $order->getIncrementId();?>
+<?php $items   = $order->getAllItems();?>
+<script>
+  skroutz_analytics('ecommerce', 'addOrder', {
+    order_id: '<?= $orderId ?>',   // Order ID. Required.
+    revenue:  '<?= number_format($order->getGrandTotal(), 2, '.', ''); ?>',  // Grand Total. Includes Tax and Shipping. Does not include payment costs.
+    shipping: '<?= number_format($order->getShippingAmount(), 2, '.', ''); ?>'     // Total Shipping Cost. Does not include payment costs.
+    tax:      '<?= number_format($order->getTaxAmount(), 2, '.', ''); ?>'    // Total Tax.
+  });
+</script>
+
+<!-- Send the Item data for each item in the shopping cart -->
+<script>
+    <?php foreach($items as $item):?>
+        skroutz_analytics('ecommerce', 'addItem', {
+        order_id:   '<?= $orderId ?>',                             
+        product_id: '<?= $item->getId() ?>',                                    
+        name:       '<?= $item->getName() ?>',  
+        price:      '<?= number_format($item->getPrice(), 2, '.', ''); ?>',                                    
+        quantity:   '<?= intval($item->getQtyOrdered()); ?>' 
+    });
+    <?php endforeach;?>
+</script>
+
+<?php endif;?>
