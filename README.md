@@ -7,10 +7,10 @@ Works with Magento 2.1.x, 2.2.x (haven't tested in 2.3.x);
 
 ### Features
 Adds global script on site
-![globalscript](http://prntscr.com/p1ww44)
+http://prntscr.com/p1ww44
 
 Send cart items along with order data on success page
-![globalscript](http://prntscr.com/p1wwu6)
+http://prntscr.com/p1wwu6
 
 
 ### Installation
