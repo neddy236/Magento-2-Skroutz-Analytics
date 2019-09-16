@@ -45,7 +45,7 @@ if ($enabled):
     <?php foreach($items as $item):?>
         skroutz_analytics('ecommerce', 'addItem', {
         order_id:   '<?= $orderId ?>',                             
-        product_id: '<?= $item->getId() ?>',                                    
+        product_id: '<?= $item->getProductId() ?>',                                    
         name:       '<?= $item->getName() ?>',  
         price:      '<?= number_format($item->getPrice(), 2, '.', ''); ?>',                                    
         quantity:   '<?= intval($item->getQtyOrdered()); ?>' 
