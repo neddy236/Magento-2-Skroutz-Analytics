@@ -35,7 +35,7 @@ if ($enabled):
   skroutz_analytics('ecommerce', 'addOrder', {
     order_id: '<?= $orderId ?>',   // Order ID. Required.
     revenue:  '<?= number_format($order->getGrandTotal(), 2, '.', ''); ?>',  // Grand Total. Includes Tax and Shipping. Does not include payment costs.
-    shipping: '<?= number_format($order->getShippingAmount(), 2, '.', ''); ?>'     // Total Shipping Cost. Does not include payment costs.
+    shipping: '<?= number_format($order->getShippingAmount(), 2, '.', ''); ?>',     // Total Shipping Cost. Does not include payment costs.
     tax:      '<?= number_format($order->getTaxAmount(), 2, '.', ''); ?>'    // Total Tax.
   });
 </script>
